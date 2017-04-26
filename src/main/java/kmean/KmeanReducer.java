@@ -25,7 +25,7 @@ public class KmeanReducer extends Reducer<Text, Text, Text, Text> {
 		FileSystem fs = FileSystem.get(conf);
 		double chance = 0;
 
-		Path chanc = new Path("/hkmean/chance");
+		Path chanc = new Path("/user/hieupd/hkmean/chance");
 		BufferedReader br = new BufferedReader(new InputStreamReader(fs.open(chanc)));
 		chance = Double.parseDouble(br.readLine());
 		br.close();
@@ -49,7 +49,7 @@ public class KmeanReducer extends Reducer<Text, Text, Text, Text> {
 
 		chance += prevcentroid.dictanceToCent(newcentroid);
 
-		Path outchance = new Path("/hkmean/chance");
+		Path outchance = new Path("/user/hieupd/hkmean/chance");
 		OutputStream os = fs.create(outchance);
 		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
 		bw.write(chance + "");
