@@ -23,8 +23,8 @@ public class KmeanTest {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
-		Path input = new Path("/hkmean/input/data.txt");
-		Path centroid = new Path("/hkmean/Centroid.txt");
+		Path input = new Path("/user/hieupd/hkmean/input/data.txt");
+		Path centroid = new Path("/user/hieupd/hkmean/Centroid.txt");
 		int iterator= 0;
 		double chance =0;
 		int numCentroid = 3;
@@ -45,7 +45,7 @@ public class KmeanTest {
 		    job.setMapperClass(KmeanMapper.class);
 		    job.setReducerClass(KmeanReducer.class);
 		    
-		    Path output = new Path("/hkmean/out"+iterator);
+		    Path output = new Path("/user/hieupd/hkmean/out"+iterator);
 		    FileSystem fs = FileSystem.get(conf);
 		    if(fs.exists(output)) {
 		    	fs.delete(output,true);
@@ -59,7 +59,7 @@ public class KmeanTest {
 		    
 		    job.waitForCompletion(true);
 		    
-		    Path chanc= new Path("/hkmean/chance");
+		    Path chanc= new Path("/user/hieupd/hkmean/chance");
 		    FileSystem fs1 = FileSystem.get(new Configuration());
 		    BufferedReader br1 = new BufferedReader(new InputStreamReader(fs1.open(chanc)));
 //		    ArrayList<Point> newcentroids = new ArrayList<Point>();
@@ -75,7 +75,7 @@ public class KmeanTest {
 		    if(chance < numCentroid*10)
 		    	isdone = true;
 		   
-		    	Path outchance = new Path("/hkmean/chance");
+		    	Path outchance = new Path("/user/hieupd/hkmean/chance");
 		    	OutputStream os = fs.create(outchance);
 		    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
 		    	bw.write("0.0");
