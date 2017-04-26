@@ -23,8 +23,8 @@ public class KmeanTest {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws IOException, ClassNotFoundException, InterruptedException {
 		// TODO Auto-generated method stub
-		Path input = new Path("/Kmean1/Input/data.txt");
-		Path centroid = new Path("/Kmean1/Centroid.txt");
+		Path input = new Path("/datakmean/data.txt");
+		Path centroid = new Path("/datakmean/Centroid.txt");
 		int iterator= 0;
 		double chance =0;
 		int numCentroid = 3;
@@ -59,7 +59,7 @@ public class KmeanTest {
 		    
 		    job.waitForCompletion(true);
 		    
-		    Path chanc= new Path("/Kmean1/chance");
+		    Path chanc= new Path("/datakmean/chance");
 		    FileSystem fs1 = FileSystem.get(new Configuration());
 		    BufferedReader br1 = new BufferedReader(new InputStreamReader(fs1.open(chanc)));
 //		    ArrayList<Point> newcentroids = new ArrayList<Point>();
@@ -75,7 +75,7 @@ public class KmeanTest {
 		    if(chance < numCentroid*10)
 		    	isdone = true;
 		   
-		    	Path outchance = new Path("/Kmean1/chance");
+		    	Path outchance = new Path("/datakmean/chance");
 		    	OutputStream os = fs.create(outchance);
 		    	BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(os));
 		    	bw.write("0.0");
