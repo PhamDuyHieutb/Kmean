@@ -36,7 +36,7 @@ public class KmeanMapper extends Mapper<Object, Text, Text, Text> {
 			}
 			br.close();
 		} else {
-			Path out = new Path("/hkmean/out" + (count - 1) + "/part-r-00000");
+			Path out = new Path("/user/hieupd/hkmean/out" + (count - 1) + "/part-r-00000");
 			FileSystem fs = FileSystem.get(conf);
 			BufferedReader br = new BufferedReader(new InputStreamReader(fs.open(out)));
 			String line = br.readLine();
